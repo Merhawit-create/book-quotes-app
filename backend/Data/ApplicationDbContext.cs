@@ -11,5 +11,6 @@ public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
     }
 
-    
+    public DbSet<Book> Books => Set<Book>();
+    public DbSet<Quote> Quotes => Set<Quote>();
 }
