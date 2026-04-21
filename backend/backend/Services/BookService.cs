@@ -48,6 +48,7 @@ public class BookService : IBookService
             .FirstOrDefaultAsync(b => b.Id == id && b.UserId == userId);
 
         if (book is null) return null;
+        
 
         book.ApplyUpdate(dto);
         await _context.SaveChangesAsync();

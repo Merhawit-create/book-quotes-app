@@ -29,8 +29,13 @@ public static class BookMappings
 
     public static void ApplyUpdate(this Book book, UpdateBookDto dto)
     {
-        book.Title = dto.Title;
-        book.Author = dto.Author;
-        book.PublishedDate = dto.PublishedDate;
+        if (dto.Title != null)
+            book.Title = dto.Title;
+
+        if (dto.Author != null)
+            book.Author = dto.Author;
+
+        if (dto.PublishedDate.HasValue)
+            book.PublishedDate = dto.PublishedDate.Value;
     }
 }
