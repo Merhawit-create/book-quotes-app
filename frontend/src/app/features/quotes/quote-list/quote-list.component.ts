@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { QuoteService } from '../../../core/services/quote.service';
 import { QuoteModel } from '../../../core/models/quote.model';
 
@@ -14,16 +14,17 @@ import { QuoteModel } from '../../../core/models/quote.model';
 export class QuoteListComponent implements OnInit {
   quotes: QuoteModel[] = [];
   editingId: number | null = null;
-
-  form = this.fb.group({
-    text: ['', Validators.required],
-    author: ['', Validators.required]
-  });
+  form: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private quoteService: QuoteService
-  ) {}
+  ) {
+    this.form = this.fb.group({
+      text: ['', Validators.required],
+      author: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
     this.loadQuotes();
