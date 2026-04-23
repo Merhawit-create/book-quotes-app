@@ -3,17 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { QuoteService } from '../../../core/services/quote.service';
 import { QuoteModel } from '../../../core/models/quote.model';
-
+import {RouterLink} from '@angular/router';
 @Component({
   selector: 'app-quote-list',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './quote-list.component.html',
   styleUrl: './quote-list.component.css'
 })
 export class QuoteListComponent implements OnInit {
   quotes: QuoteModel[] = [];
   editingId: number | null = null;
+  showForm = false;
   form: FormGroup;
 
   constructor(
@@ -34,6 +35,11 @@ export class QuoteListComponent implements OnInit {
     this.quoteService.getAll().subscribe(quotes => this.quotes = quotes);
   }
 
+  openAddForm(): void {
+    this.showForm = true;
+    this.editingId = null;
+    this.form.reset();
+  }
   onSubmit(): void {
     if (this.form.invalid) return;
 
@@ -53,6 +59,7 @@ export class QuoteListComponent implements OnInit {
   }
 
   editQuote(quote: QuoteModel): void {
+    this.showForm = true;
     this.editingId = quote.id;
     this.form.patchValue({
       text: quote.text,
@@ -68,6 +75,7 @@ export class QuoteListComponent implements OnInit {
 
   resetForm(): void {
     this.editingId = null;
+    this.showForm = false;
     this.form.reset();
   }
 }
