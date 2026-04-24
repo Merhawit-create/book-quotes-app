@@ -12,13 +12,16 @@ import { AuthResponseModel } from '../models/auth-response.model';
 })
 export class AuthService {
   private readonly tokenKey = 'token';
+  // Stores the current logged-in user state for the UI.
   currentUser = signal<string | null>(localStorage.getItem(this.tokenKey) ? 'Logged User' : null);
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) {}
-
+  /**
+   * Registers a new user and stores the JWT token when registration succeeds.
+   */
   register(data: RegisterModel): Observable<AuthResponseModel> {
     return this.http.post<AuthResponseModel>(`${environment.apiUrl}/auth/register`, data).pipe(
       tap(response => {
@@ -29,7 +32,9 @@ export class AuthService {
       })
     );
   }
-
+  /**
+   * Logs in an existing user and stores the JWT token when login succeeds.
+   */
   login(data: LoginModel): Observable<AuthResponseModel> {
     return this.http.post<AuthResponseModel>(`${environment.apiUrl}/auth/login`, data).pipe(
       tap(response => {
@@ -41,12 +46,16 @@ export class AuthService {
     );
   }
 
-
+  /**
+   * Returns the JWT token from local storage.
+   */
   getToken(): string | null {
     return localStorage.getItem('token');
   }
 
-
+  /**
+   * Checks if the user is logged in and if the token is still valid.
+   */
   isLoggedIn(): boolean {
     const token = this.getToken();
 
@@ -59,7 +68,9 @@ export class AuthService {
 
     return true;
   }
-
+  /**
+   * Checks whether the JWT token has expired.
+   */
   private isTokenExpired(token: string): boolean {
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
@@ -68,7 +79,9 @@ export class AuthService {
       return true;
     }
   }
-
+  /**
+   * Logs out the user by removing the token and redirecting to login.
+   */
   logout(): void {
     localStorage.removeItem('token');
     this.currentUser.set(null);
