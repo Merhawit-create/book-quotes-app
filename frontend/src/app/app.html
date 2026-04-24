@@ -1,2 +1,10 @@
+<div class="app-wrapper" [class.dark-theme]="isDarkMode">
+
+<div class="theme-toggle-wrapper">
+  <button class="btn btn-secondary" (click)="toggleTheme()">
+    {{ isDarkMode ? '🌞 Light Mode' : '🌙 Dark Mode' }}
+  </button>
+</div>
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
+</div>

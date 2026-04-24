@@ -1,1 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: #f8f9fa;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.app-wrapper.dark-theme {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+.app-wrapper.dark-theme .container {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+.app-wrapper.dark-theme h1,
+.app-wrapper.dark-theme h2,
+.app-wrapper.dark-theme h3,
+.app-wrapper.dark-theme h4,
+.app-wrapper.dark-theme h5,
+.app-wrapper.dark-theme p,
+.app-wrapper.dark-theme label,
+.app-wrapper.dark-theme strong {
+  color: #ffffff !important;
+}
+
+.app-wrapper.dark-theme .card {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border-color: #333 !important;
+}
+
+.app-wrapper.dark-theme .card-footer {
+  background-color: #252525 !important;
+  border-color: #333 !important;
+}
+
+.app-wrapper.dark-theme input,
+.app-wrapper.dark-theme textarea {
+  background-color: #2a2a2a !important;
+  color: #ffffff !important;
+  border-color: #555 !important;
+}
