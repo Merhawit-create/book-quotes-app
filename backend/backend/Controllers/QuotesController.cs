@@ -5,19 +5,26 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
-
+/// <summary>
+/// Provides authenticated CRUD operations for quotes owned by the current user.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]
+
 public class QuotesController : ControllerBase
 {
     private readonly IQuoteService _quoteService;
-
+    /// <summary>
+    /// Initializes a new instance of the QuotesController.
+    /// </summary>
     public QuotesController(IQuoteService quoteService)
     {
         _quoteService = quoteService;
     }
-
+    /// <summary>
+    /// Returns all quotes that belong to the authenticated user.
+    /// </summary>
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -27,7 +34,9 @@ public class QuotesController : ControllerBase
         var quotes = await _quoteService.GetAllAsync(userId);
         return Ok(quotes);
     }
-
+    /// <summary>
+    /// Returns a specific quote by ID if it belongs to the authenticated user.
+    /// </summary>
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
@@ -39,7 +48,9 @@ public class QuotesController : ControllerBase
 
         return Ok(quote);
     }
-
+    /// <summary>
+    /// Creates a new quote for the authenticated user.
+    /// </summary>
     [HttpPost]
     public async Task<IActionResult> Create(CreateQuoteDto dto)
     {
@@ -49,7 +60,9 @@ public class QuotesController : ControllerBase
         var createdQuote = await _quoteService.CreateAsync(dto, userId);
         return CreatedAtAction(nameof(GetById), new { id = createdQuote.Id }, createdQuote);
     }
-
+    /// <summary>
+    /// Updates an existing quote if it belongs to the authenticated user.
+    /// </summary>
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, UpdateQuoteDto dto)
     {
@@ -61,7 +74,9 @@ public class QuotesController : ControllerBase
 
         return Ok(updatedQuote);
     }
-
+    /// <summary>
+    /// Deletes a quote if it belongs to the authenticated user.
+    /// </summary>
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {

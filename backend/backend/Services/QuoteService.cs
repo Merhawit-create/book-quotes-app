@@ -5,7 +5,9 @@ using backend.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Services;
-
+/// <summary>
+/// Handles quote-related business logic and ensures users only access their own quotes.
+/// </summary>
 public class QuoteService : IQuoteService
 {
     private readonly ApplicationDbContext _context;

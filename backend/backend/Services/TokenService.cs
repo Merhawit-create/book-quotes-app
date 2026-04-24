@@ -6,7 +6,9 @@ using backend.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 
 namespace backend.Services;
-
+/// <summary>
+/// Creates JWT tokens containing user identity claims.
+/// </summary>
 public class TokenService : ITokenService
 {
     private readonly IConfiguration _configuration;

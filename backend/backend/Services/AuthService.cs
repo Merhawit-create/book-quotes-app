@@ -4,7 +4,9 @@ using backend.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
 namespace backend.Services;
-
+/// <summary>
+/// Contains business logic for registering and logging in users.
+/// </summary>
 public class AuthService : IAuthService
 {
     private readonly UserManager<AppUser> _userManager;

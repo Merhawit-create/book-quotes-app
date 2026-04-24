@@ -5,7 +5,9 @@ using backend.Mappings;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Services;
-
+/// <summary>
+/// Handles book-related business logic and ensures users only access their own books.
+/// </summary>
 public class BookService : IBookService
 {
     private readonly ApplicationDbContext _context;
