@@ -108,10 +108,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AngularClient");
 
 
 //  Viktigt för Identity (lägg till!)
+app.UseCors("AngularClient");
 app.UseAuthentication();
 app.UseAuthorization();
 
