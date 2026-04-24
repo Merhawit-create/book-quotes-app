@@ -42,10 +42,10 @@ export class BookFormComponent implements OnInit {
           author: book.author,
           publishedDate: book.publishedDate.split('T')[0]
         });
+
       });
     }
   }
-
   onSubmit(): void {
     if (this.form.invalid) return;
 
@@ -58,7 +58,8 @@ export class BookFormComponent implements OnInit {
     } else {
       this.bookService.create(payload).subscribe(() => {
         this.router.navigate(['/books']);
-      });
+      }
+      );
     }
   }
 }

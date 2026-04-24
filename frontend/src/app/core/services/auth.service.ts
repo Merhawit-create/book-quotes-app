@@ -41,17 +41,40 @@ export class AuthService {
     );
   }
 
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+
+  isLoggedIn(): boolean {
+    const token = this.getToken();
+
+    if (!token) return false;
+
+    if (this.isTokenExpired(token)) {
+      this.logout();
+      return false;
+    }
+
+    return true;
+  }
+
+  private isTokenExpired(token: string): boolean {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return Date.now() >= payload.exp * 1000;
+    } catch {
+      return true;
+    }
+  }
+
   logout(): void {
-    localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem('token');
     this.currentUser.set(null);
     this.router.navigate(['/login']);
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.tokenKey);
-  }
 
-  isLoggedIn(): boolean {
-    return !!this.getToken();
-  }
+
 }

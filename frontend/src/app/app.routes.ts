@@ -5,7 +5,7 @@ import { RegisterComponent } from './features/auth/register/register.component';
 import { BookListComponent } from './features/books/book-list/book-list.component';
 import { BookFormComponent } from './features/books/book-form/book-form.component';
 import { QuoteListComponent } from './features/quotes/quote-list/quote-list.component';
-
+import { Profile } from './features/profile/profile';
 export const routes: Routes = [
   { path: '', redirectTo: 'books', pathMatch: 'full' },
 
@@ -18,5 +18,9 @@ export const routes: Routes = [
 
   { path: 'quotes', component: QuoteListComponent, canActivate: [authGuard] },
 
-  { path: '**', redirectTo: 'books' }
+  {
+    path: 'profile',
+    component: Profile,
+    canActivate: [authGuard]
+  },{ path: '**', redirectTo: 'books' }
 ];

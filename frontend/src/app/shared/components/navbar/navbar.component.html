@@ -28,6 +28,11 @@
 
         <ng-template #loggedInBlock>
           <li class="nav-item">
+            <a class="nav-link" routerLink="/profile" routerLinkActive="active">
+              Profile
+            </a>
+          </li>
+          <li class="nav-item">
             <button class="btn btn-outline-light btn-sm" (click)="authService.logout()">Logout</button>
           </li>
         </ng-template>
