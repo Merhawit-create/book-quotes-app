@@ -1,6 +1,8 @@
-﻿<div class="container mt-4">
+﻿<!-- Add/Edit book form -->
+<div class="container mt-4">
   <div class="card shadow">
     <div class="card-body">
+      <!-- Dynamic title -->
       <h2 class="mb-4">{{ isEditMode ? 'Edit Book' : 'Add New Book' }}</h2>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">

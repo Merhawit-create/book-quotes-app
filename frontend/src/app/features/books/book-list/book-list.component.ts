@@ -11,6 +11,9 @@ import { BookModel } from '../../../core/models/book.model';
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
+/**
+ * Displays all books and handles delete/edit actions.
+ */
 export class BookListComponent implements OnInit {
   books: BookModel[] = [];
 
@@ -22,13 +25,14 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
     this.loadBooks();
   }
-
+  // Load all books
   loadBooks(): void {
     this.bookService.getAll().subscribe({
       next: books => this.books = books
     });
   }
 
+  // Delete book
   deleteBook(id: number): void {
     if (!confirm('Are you sure you want to delete this book?')) return;
 
@@ -37,6 +41,8 @@ export class BookListComponent implements OnInit {
     });
   }
 
+
+  // Navigate to edit
   editBook(id: number): void {
     this.router.navigate(['/books/edit', id]);
   }

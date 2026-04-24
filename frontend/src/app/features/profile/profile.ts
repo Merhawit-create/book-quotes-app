@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   templateUrl: './profile.html',
   styleUrl: './profile.css'
 })
+/**
+ * Extracts user data from JWT token.
+ */
 export class Profile {
 
   getUserData() {
@@ -14,10 +17,7 @@ export class Profile {
 
     const payload = JSON.parse(atob(token.split('.')[1]));
     console.log(payload);
-   /* return {
-      username: payload['unique_name'],
-      email: payload['email']
-    };*/
+
     return {
       username: payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
         || payload['unique_name']

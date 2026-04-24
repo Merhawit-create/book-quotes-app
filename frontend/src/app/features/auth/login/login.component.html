@@ -1,25 +1,31 @@
-﻿<div class="container mt-5">
+﻿<!-- Login form container centered on the page -->
+<div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card shadow">
         <div class="card-body">
+          <!-- Page title -->
           <h2 class="mb-4 text-center">Login</h2>
 
+          <!-- Reactive login form -->
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <!-- Username input -->
             <div class="mb-3">
               <label class="form-label">Username</label>
               <input type="text" class="form-control" formControlName="userName">
             </div>
 
+            <!-- Password input -->
             <div class="mb-3">
               <label class="form-label">Password</label>
               <input type="password" class="form-control" formControlName="password">
             </div>
-
+            <!-- Error message -->
             <div *ngIf="errorMessage" class="alert alert-danger">
               {{ errorMessage }}
             </div>
-
+            <!-- Submit button -->
             <button class="btn btn-primary w-100" type="submit">
               <i class="fa-solid fa-right-to-bracket me-2"></i>
               Login

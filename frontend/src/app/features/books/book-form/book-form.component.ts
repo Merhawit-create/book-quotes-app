@@ -11,6 +11,9 @@ import { BookService } from '../../../core/services/book.service';
   templateUrl: './book-form.component.html',
   styleUrl: './book-form.component.css'
 })
+/**
+ * Handles both create and edit book functionality.
+ */
 export class BookFormComponent implements OnInit {
   isEditMode = false;
   bookId = 0;
@@ -31,7 +34,7 @@ export class BookFormComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-
+// If id exists → edit mode
     if (id) {
       this.isEditMode = true;
       this.bookId = +id;
@@ -46,6 +49,9 @@ export class BookFormComponent implements OnInit {
       });
     }
   }
+  /**
+   * Save or update book.
+   */
   onSubmit(): void {
     if (this.form.invalid) return;
 

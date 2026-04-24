@@ -11,6 +11,9 @@ import { AuthService } from '../../../core/services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+/**
+ * Handles user login using reactive form.
+ */
 export class LoginComponent {
   errorMessage = '';
   form:FormGroup;
@@ -20,12 +23,15 @@ export class LoginComponent {
     private authService: AuthService,
     private router: Router
   ) {
+    // Initialize form with validation
     this.form = this.fb.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
-
+  /**
+   * Submits login request to backend.
+   */
   onSubmit(): void {
     if (this.form.invalid) return;
 

@@ -11,6 +11,9 @@ import { AuthService } from '../../../core/services/auth.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
+/**
+ * Handles user registration.
+ */
 export class RegisterComponent {
   errorMessages: string[] = [];
   form: FormGroup;
@@ -20,13 +23,16 @@ export class RegisterComponent {
     private authService: AuthService,
     private router: Router
   ) {
+    // Form validation
     this.form = this.fb.group({
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-
+  /**
+   * Sends register request.
+   */
   onSubmit(): void {
     if (this.form.invalid) return;
 
