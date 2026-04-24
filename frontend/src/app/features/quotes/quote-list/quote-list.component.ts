@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { QuoteService } from '../../../core/services/quote.service';
 import { QuoteModel } from '../../../core/models/quote.model';
-import {RouterLink} from '@angular/router';
+
+
 @Component({
   selector: 'app-quote-list',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './quote-list.component.html',
   styleUrl: './quote-list.component.css'
 })
@@ -77,5 +78,16 @@ export class QuoteListComponent implements OnInit {
     this.editingId = null;
     this.showForm = false;
     this.form.reset();
+  }
+  toggleFavorite(quote: QuoteModel): void {
+    const updatedQuote = {
+      text: quote.text,
+      author: quote.author,
+      isFavorite: !quote.isFavorite
+    };
+
+    this.quoteService.update(quote.id, updatedQuote).subscribe(() => {
+      this.loadQuotes();
+    });
   }
 }

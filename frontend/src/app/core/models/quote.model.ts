@@ -2,4 +2,5 @@
   id: number;
   text: string;
   author: string;
+  isFavorite: boolean;
 }

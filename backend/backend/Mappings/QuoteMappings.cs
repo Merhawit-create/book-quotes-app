@@ -11,7 +11,8 @@ public static class QuoteMappings
         {
             Id = quote.Id,
             Text = quote.Text,
-            Author = quote.Author
+            Author = quote.Author,
+            IsFavorite = quote.IsFavorite
         };
     }
 
@@ -21,6 +22,7 @@ public static class QuoteMappings
         {
             Text = dto.Text,
             Author = dto.Author,
+            IsFavorite = dto.IsFavorite,
             UserId = userId
         };
     }
@@ -29,5 +31,6 @@ public static class QuoteMappings
     {
         quote.Text = dto.Text;
         quote.Author = dto.Author;
+        quote.IsFavorite = dto.IsFavorite;
     }
 }
