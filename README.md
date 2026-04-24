@@ -24,9 +24,10 @@ The application demonstrates modern web development practices using a .NET Web A
 * JWT-based authentication
 * CRUD operations for books
 * CRUD operations for quotes
+* Favorite quotes (⭐ toggle)
 * Responsive design
 * Navigation between Books and Quotes pages
-* (Optional) Dark mode toggle
+*  Light/Dark mode toggle (🌞 / 🌙)
 
 ## Project Structure
 
@@ -79,4 +80,6 @@ book-quotes-app/
 
 ## Status
 
-Project in progress. Backend setup in progress.
+
+Frontend and backend completed.
+Application includes authentication, CRUD features, favorites, and dark mode.
