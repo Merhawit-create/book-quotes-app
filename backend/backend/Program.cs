@@ -108,11 +108,11 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.Migrate();
 }
 // Middleware
-if (app.Environment.IsDevelopment())
-{
+/*if (app.Environment.IsDevelopment())
+{*/
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 app.UseHttpsRedirection();
 

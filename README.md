@@ -75,11 +75,17 @@ book-quotes-app/
 
 ### Phase 7: Deployment
 
-* Deploy backend (Azure)
+* Deploy backend (Render)
 * Deploy frontend (Netlify or Vercel)
 
 ## Status
 
-
 Frontend and backend completed.
 Application includes authentication, CRUD features, favorites, and dark mode.
+## Live Demo
+
+Frontend (Netlify):
+https://merhawit-book-quotes-app.netlify.app
+
+Backend API (Render):
+https://book-quotes-app-wdl3.onrender.com
