@@ -89,3 +89,13 @@ https://merhawit-book-quotes-app.netlify.app
 
 Backend API (Render):
 https://book-quotes-app-wdl3.onrender.com
+## Screenshots
+
+### Desktop
+[Desktop](./screenshots/desktop.png)
+
+### Mobile
+[Mobile](./screenshots/mobile.png)
+
+### Surfplatte
+[Surfplatte](./screenshots/dark.png)
