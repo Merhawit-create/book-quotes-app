@@ -24,6 +24,9 @@
               <label class="form-label">Password</label>
               <!-- Password -->
               <input type="password" class="form-control" formControlName="password">
+              <small class="text-muted">
+                Password must be at least 6 characters and include one number and one lowercase letter.
+              </small>
             </div>
             <!-- Error messages -->
             <div *ngIf="errorMessages.length > 0" class="alert alert-danger">

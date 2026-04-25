@@ -30,15 +30,23 @@ export class RegisterComponent {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
+
   /**
    * Sends register request.
    */
   onSubmit(): void {
-    if (this.form.invalid) return;
+    if (this.form.invalid) {
+      this.errorMessages = ['Please fill in all fields correctly.'];
+      return;
+    }
 
     this.authService.register(this.form.getRawValue() as any).subscribe({
       next: () => this.router.navigate(['/books']),
-      error: err => this.errorMessages = err.error?.errors || ['Registration failed.']
+      error: err => {
+        this.errorMessages = err.error?.errors || [
+          'Registration failed. Please check your username, email, and password.'
+        ];
+      }
     });
   }
 }
